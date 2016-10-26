@@ -141,10 +141,40 @@ def blueClientThread(clientSocket):
 		
 		# Play Modulated Sound		
 		elif ('<modPlay>' in btData):
+
 			print "Received [%s]" % btData
+			# Filename
 			btData = clientSocket.recv(1024)
-			os.system('play "' + btData[btData.index('<')+1:btData.index('>')] + '" pitch -921 speed 1.09 bass 10 overdrive 20 loudness -10 echo 0.7 1 55 0.5 </dev/null &>/dev/null &')
+			# Pitch: -1000 to 1000
+			pitch = clientSocket.recv(1024)
+			# Speed: 0.1 to 1 to 10
+			speed = clientSocket.recv(1024)
+			# Treble: -20 to 20
+			treble = clientSocket.recv(1024)
+			# Bass: -20 to 20
+			bass = clientSocket.recv(1024)
+			# Overdrive: 0 to 100
+			overdrive = clientSocket.recv(1024)
+			# Loudness -10 to 50
+			loudness = clientSocket.recv(1024)
+			
+			# ECHO
+			# Gain In: 0.1 to 2
+			echoGainIn = clientSocket.recv(1024)
+			# Gain Out: 0.1 to 2
+			echoGainOut = clientSocket.recv(1024)
+			# Delay: 1 to 1000
+			echoDelay = clientSocket.recv(1024)
+			# Decay: 0 to 1
+			echoDecay = clientSocket.recv(1024)
+
+			# Play file with passed parameters
+			os.system('play "' + btData[btData.index('<')+1:btData.index('>')] + '" pitch ' + pitch[pitch.index('<')+1:pitch.index('>')] + ' speed ' + speed[speed.index('<')+1:speed.index('>')] + ' treble ' + treble[treble.index('<')+1:treble.index('>')] + ' bass ' + bass[bass.index('<')+1:bass.index('>')] + ' overdrive ' + overdrive[overdrive.index('<')+1:overdrive.index('>')] + ' loudness ' + loudness[loudness.index('<')+1:loudness.index('>')] + ' echo ' + echoGainIn[echoGainIn.index('<')+1:echoGainIn.index('>')] + ' ' + echoGainOut[echoGainOut.index('<')+1:echoGainOut.index('>')] + ' ' + echoDelay[echoDelay.index('<')+1:echoDelay.index('>')] + ' ' + echoDecay[echoDecay.index('<')+1:echoDecay.index('>')] + ' </dev/null &>/dev/null &')
+
+			#BACKUP
+			#os.system('play "' + btData[btData.index('<')+1:btData.index('>')] + '" pitch -921 speed 1.09 bass 10 overdrive 20 loudness -10 echo 0.7 1 55 0.5 </dev/null &>/dev/null &')
 		
+
 
 		# Escape loop if disconnected
 		elif not btData:
