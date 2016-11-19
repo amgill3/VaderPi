@@ -14,10 +14,9 @@ import socket
 import ssl
 import json
 import subprocess
+from idv import sync
 
 connflag = False
-
-updatecmd = ['aws', 's3', 'sync', 's3://vader-blackspace', '/home/pi/audio', '--exclude', '"*"', '--include', '"*.mp3"', '--delete']
 
 def on_connect(client, userdata, flags, rc):
     global connflag
@@ -28,15 +27,15 @@ def on_connect(client, userdata, flags, rc):
     client.subscribe("$aws/things/Vader_Blackspace/shadow/update/accepted" , 1 )
 
 def on_message(client, userdata, msg):
-    global updatecmd
-    print("topic: "+msg.topic)
-    print("payload: "+str(msg.payload))
+    #print("topic: "+msg.topic)
+    #print("payload: "+str(msg.payload))
     data = json.loads(msg.payload)
-    print(data)
-    print(data["state"]["desired"]["switch"])
+    #print(data)
+    #print(data["state"]["desired"]["switch"])
     if (data["state"]["desired"]["switch"]) == "on":
         print("update folder")
-        subprocess.Popen(updatecmd)
+        sync()
+        print("Done")
     else:
         print("no update")
 
