@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 #VaderPi installion script
 
-Access_Key_ID="AKIAJJZTLOGGEBBUPNWQ"
-Secret_Access_Key="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"
+read -p "Enter Access ID: " Access_Key_ID
+read -p "Enter Access Key: " Secret_Access_Key
+
 Region="us-west-2"
 
-Vader_Name="testvaderthing"
+#Vader_Name="testvaderthing"
 
 ## Run pre-install checks ##
 
@@ -25,9 +26,9 @@ me=$(whoami)
 #sudo apt-get --force-yes --yes install python-pexpect python-bluez bluetooth bluez
 
 ## Install AWS ##
-sudo pip install awscli
+#sudo pip install awscli
 #sudo pip install paho-mqtt
-mkdir ~/.aws
+#mkdir ~/.aws
 touch ~/.aws/config
 touch ~/.aws/credentials
 echo "[default]" >> ~/.aws/config
