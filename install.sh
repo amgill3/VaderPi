@@ -42,7 +42,7 @@ sudo cp lipopi/lipopi.service /etc/systemd/system/
 sudo systemctl enable lipopi.service
 sudo systemctl start lipopi.service
 
-sudo cp idv.service /etc/systemd/system/
+sudo cp scripts/idv.service /etc/systemd/system/
 sudo systemctl enable idv.service
 sudo systemctl start idv.service
 
