@@ -1,0 +1,13 @@
+# systemd service file for IDV
+# change the /home/pi paths to suite your configuration
+
+[Unit]
+Description=IDV Service
+After=multi-user.target
+
+[Service]
+Type= idle
+ExecStart= /usr/bin/python /home/pi/scripts/idv.py
+
+[Install]
+WantedBy=multi-user.target
