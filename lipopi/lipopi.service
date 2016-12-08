@@ -2,7 +2,7 @@
 # change the /home/pi paths to suite your configuration
 
 [Service]
-ExecStart=/home/pi/lipopi/lipopi.py
+ExecStart= /usr/bin/python /home/pi/lipopi/lipopi.py
 WorkingDirectory=/home/pi/lipopi/
 Restart=always
 StandardOutput=syslog
