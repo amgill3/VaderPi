@@ -1,34 +1,34 @@
 #!/usr/bin/env bash
 #VaderPi installion script
 
+read -p "Enter Vader Name: " Vader_Name
 read -p "Enter Access ID: " Access_Key_ID
 read -p "Enter Access Key: " Secret_Access_Key
 
 Region="us-west-2"
 
-#Vader_Name="testvaderthing"
 
 ## Run pre-install checks ##
 
 me=$(whoami)
 
-#sudo apt-get update
-#sudo apt-get upgrade
+sudo apt-get update
+sudo apt-get upgrade
 
 ## Install necessary dependencies ##
 
 ## Install sox ##
-#sudo apt-get --force-yes --yes install sox
-#pip install git+https://github.com/rabitt/pysox.git
-#sudo apt-get --force-yes --yes install libsox-fmt-mp3
+sudo apt-get --force-yes --yes install sox
+sudo apt-get --force-yes --yes install libsox-fmt-mp3
+sudo pip install glob2
 
 ## Install bluetooth ##
-#sudo apt-get --force-yes --yes install python-pexpect python-bluez bluetooth bluez
+sudo apt-get --force-yes --yes install python-pexpect python-bluez bluetooth bluez
 
 ## Install AWS ##
-#sudo pip install awscli
-#sudo pip install paho-mqtt
-#mkdir ~/.aws
+sudo pip install awscli
+sudo pip install paho-mqtt
+mkdir ~/.aws
 touch ~/.aws/config
 touch ~/.aws/credentials
 echo "[default]" >> ~/.aws/config
@@ -37,12 +37,24 @@ echo "[default]" >> ~/.aws/credentials
 echo "aws_access_key_id = $Access_Key_ID" >> ~/.aws/credentials
 echo "aws_secret_access_key = $Secret_Access_Key" >> ~/.aws/credentials
 
-## Setup Pi with AWS ##
-#aws iot create-thing --thing-name $Vader_Name
-#aws iot create-keys-and-certificate --set-as-active --certificate-pem-outfile cert.pem --public-key-outfile publicKey.pem --private-key-outfile privkey.pem
+## Move folders ##
+mv scripts /home/pi/
+mv lipopi /home/pi/
+
+## Startup Services ##
+sudo cp lipopi.service /etc/systemd/system/
+sudo systemctl enable lipopi.service
+sudo systemctl start lipopi.service
+
+sudo cp idv.service /etc/systemd/system/
+sudo systemctl enable idv.service
+sudo systemctl start idv.service
+
+## Setup WiFi Direct ##
+git clone http://github.com/amgill3/provision.git
+cd provision
+sudo ./provision iptables node wifi-connect
+sudo BRANCH=next rpi-update
 
 ## Setup Audio DAC ##
-#mv raspi-blacklist.conf /etc/modprobe.d/
-#mv modules /etc/
-#mv asound.conf /etc/
-#mv config.txt /boot/
+curl -sS https://raw.githubusercontent.com/adafruit/Raspberry-Pi-Installer-Scripts/master/i2samp.sh | bash
