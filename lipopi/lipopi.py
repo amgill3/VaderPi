@@ -93,7 +93,7 @@ def lipopi_cleanup():
 lipopi = {}
 
 # Specify which GPIO pins to use
-lipopi['low_battery_pin'] = 4
+lipopi['low_battery_pin'] = 15
 
 lipopi['shutdown_pin']    = 20
 
