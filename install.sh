@@ -37,18 +37,18 @@ echo "[default]" >> ~/.aws/credentials
 echo "aws_access_key_id = $Access_Key_ID" >> ~/.aws/credentials
 echo "aws_secret_access_key = $Secret_Access_Key" >> ~/.aws/credentials
 
-## Move folders ##
-mv scripts /home/pi/
-mv lipopi /home/pi/
-
 ## Startup Services ##
-sudo cp lipopi.service /etc/systemd/system/
+sudo cp lipopi/lipopi.service /etc/systemd/system/
 sudo systemctl enable lipopi.service
 sudo systemctl start lipopi.service
 
 sudo cp idv.service /etc/systemd/system/
 sudo systemctl enable idv.service
 sudo systemctl start idv.service
+
+## Move folders ##
+mv scripts /home/pi/
+mv lipopi /home/pi/
 
 ## Setup WiFi Direct ##
 git clone http://github.com/amgill3/provision.git
