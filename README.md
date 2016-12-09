@@ -49,6 +49,9 @@ repeat for the Access Key
    - Press Enter
  - Create a name for the new vader - note: Use the prefix "vader-" before the name to ensure that the name is available. example: "vader-blackspace"
   - sudo aws s3 mb s3://'new vader name goes here'
+ - ifconfig wlan0
+  - Take note of the HWaddr along with the accosicated Pi (vader name)
+   - In some cases to setup wifi such as on a school network they will need this address to bypass web-sign in
 
 Open the file manager
  - Open scripts folder
@@ -56,8 +59,9 @@ Open the file manager
   - Scroll down to vader_name and edit to the new vader name
   - note: Use the prefix "vader-" before the name to ensure that the name is available. example: "vader-blackspace"
 
-
-
+THE VADER SOFTWARE IS NOW SETUP YOU CAN REBOOT OR SHUTDOWN THE PI AND PROCEED WITH HARDWARE
+ - Reboot - sudo reboot
+ - Shutdown - sudo shutdown now
 
 ## Wiring ##
 
@@ -93,3 +97,9 @@ Middle Button
 
 Bottom Button - Power Button
 (used to turn the Pi off and On)
+
+When the Pi is removed from the Ethernet and not connected to a Wifi Network it will create a hotspot called VaderPi
+ - On a phone, tablet, or computer with wifi access
+  - navigate to connect to a wifi network
+  - Select VaderPi
+  - Setup the wireless connection
