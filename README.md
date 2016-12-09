@@ -1,6 +1,7 @@
 
 
-## VaderPi Installation ## - Files necessary to setup a VaderPi and connect to AWS
+## VaderPi Installation ## 
+- Files necessary to setup a VaderPi and connect to AWS
 
 Download the latest Raspbian image from the link provided: https://www.raspberrypi.org/downloads/raspbian/
 
@@ -38,6 +39,9 @@ repeat for the Access Key
 
 
 connmanctl enable bluetooth
+
+## Wiring ##
+
 
 
 ## Functionality ##
