@@ -10,7 +10,13 @@ https://www.raspberrypi.org/documentation/installation/installing-images/README.
 
 Load the SD Card into the Raspberry Pi and apply power. Once the Pi has booted up:
 - Right click on the bluetooth icon in top top right corner and remove it from the panel
-- Open
+- Open the menu in the top left
+ - Preferences
+ - Mouse and Keyboard Settings
+ - Keyboard Tab (Click Keyboard Layout)
+ - Set the layout to United States - English (US)
+
+ENSURE THAT THE PI IS CONNECTED TO THE INTERNET BY ETHERNET TO PERFORM THE REST OF THE STEPS
 
 Perform the following commands using the command prompt.
 - git clone https://github.com/amgill3/VaderPi.git
@@ -29,16 +35,29 @@ Using the browser on the Pi, Login to the AWS console: https://console.aws.amazo
 - Click on Create access key
 - download the .csv file and open it for later use
 
-
-
-
-Enter the name of the Vader you are setting up and press enter
-note: Use the prefix "vader-" before the name to ensure that the name is available ie. "vader-blackspace"
-Using the opened csv file copy and paste the Access ID into the prompt and press enter
+Perform the following commands using the command prompt.
+ - sudo aws configure
+  - Using the opened csv file copy and paste the Access ID into the prompt and press enter
 repeat for the Access Key
+  - Type: 'us-west-2' for region
+  - Leave output format blank
+ - connmanctl enable bluetooth
+ - sudo nano /etc/bluetooth/main.conf
+   - navigate down to Discoverable Timout and remove the '#' in front
+   - Crtl X (To Exit)
+   - 'y' for yes
+   - Press Enter
+ - Create a name for the new vader - note: Use the prefix "vader-" before the name to ensure that the name is available. example: "vader-blackspace"
+  - sudo aws s3 mb s3://'new vader name goes here'
+
+Open the file manager
+ - Open scripts folder
+ - Open idv.py
+  - Scroll down to vader_name and edit to the new vader name
+  - note: Use the prefix "vader-" before the name to ensure that the name is available. example: "vader-blackspace"
 
 
-connmanctl enable bluetooth
+
 
 ## Wiring ##
 
