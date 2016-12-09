@@ -52,7 +52,7 @@ Helpful instructions can be found at the links below:
  ![circuit](https://raw.github.com/amgill3/VaderPi/master/pictures/powercircuit.png)
   
 - Wiring the Playback Buttons
- ![circuit](https://raw.github.com/amgill3/VaderPi/master/pictures/button_bb.pg)
+ ![circuit](https://raw.github.com/amgill3/VaderPi/master/pictures/button_bb.png)
  ![circuit](https://raw.github.com/amgill3/VaderPi/master/pictures/button_schem.png)
 
 
