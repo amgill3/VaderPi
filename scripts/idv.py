@@ -35,6 +35,7 @@ blueSocket = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
 clientSocket = None
 audiofolder = '/home/pi/audio/'
 tagfolder = '/home/pi/audiotags/'
+vader_name = 's3://vader-blackspace'
 btData = ''
 audiolist = []
 top = 0
@@ -152,7 +153,7 @@ def sync():
 
 			# No Tags
 			if (awsTags is False and awsLoop is False):
-				updatecmd = ['aws', 's3', 'sync', 's3://vader-blackspace', '/home/pi/audio', '--exclude', '"*"', '--include', '"*.mp3"', '--delete']
+				updatecmd = ['aws', 's3', 'sync', vader_name, audiofolder, '--exclude', '"*"', '--include', '"*.mp3"', '--delete']
 				sync = subprocess.Popen(updatecmd)
 				#sync.wait()
 				awsLoop = True
@@ -160,7 +161,7 @@ def sync():
 			# Tags
 			elif (awsTags is True and awsLoop is False):
 				synctagdir = 's3://vader-tags/'+tagDir
-				synccmd = ['aws', 's3', 'sync', synctagdir, '/home/pi/audiotags', '--exclude', '"*"', '--include', '"*.mp3"', '--delete']
+				synccmd = ['aws', 's3', 'sync', synctagdir, tagfolder, '--exclude', '"*"', '--include', '"*.mp3"', '--delete']
 				tagsync = subprocess.Popen(synccmd)
 				#tagsync.wait()
 				awsLoop = True
