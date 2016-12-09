@@ -1,6 +1,6 @@
 
 
-## VaderPi Installation ## 
+## VaderPi Installation ##
 - Files necessary to setup a VaderPi and connect to AWS
 
 Download the latest Raspbian image from the link provided: https://www.raspberrypi.org/downloads/raspbian/
@@ -49,7 +49,7 @@ Helpful instructions can be found at the links below:
  - https://learn.adafruit.com/adafruit-max98357-i2s-class-d-mono-amp/raspberry-pi-wiring
   
 - Wiring the Power Circuit
-  ![circuit](https://raw.github.com/amgill3/VaderPi/master/pictures/powercircuit.png)
+ ![circuit](https://raw.github.com/amgill3/VaderPi/master/pictures/powercircuit.png)
   
 - Wiring the Playback Buttons
  ![circuit](https://raw.github.com/amgill3/VaderPi/master/pictures/button_bb.png)
