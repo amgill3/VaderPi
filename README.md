@@ -1,4 +1,6 @@
 
+Converted from the Github Readme
+https://github.com/amgill3/VaderPi
 
 ## VaderPi Installation ##
 - Files necessary to setup a VaderPi and connect to AWS
